@@ -9,10 +9,11 @@ export default function SidetextandIcon({ step_text, main_text, number, style, o
     ];
 
 
-    const [activeIndex, setActiveIndex] = useState(null);
+    const [activeIndex, setActiveIndex] = useState(0);
 
     const handleCircleClick = (index) => {
         setActiveIndex(index);
+        console.log(index)
     };
 
 
@@ -20,10 +21,10 @@ export default function SidetextandIcon({ step_text, main_text, number, style, o
         <div>
 
             <div className="side_content">
-                <div class="circle">
+                <div className="circle">
 
                     {Array.from({ length: 4 }, (_, index) => (
-                        <div className="circle1" key={index}>
+                        <div className={`circle1 ${activeIndex === index ? "circle1-active" : ""}`} key={index} onClick={() => handleCircleClick(index)}>
                             <p>{index + 1}</p>
                         </div>
                     ))}
