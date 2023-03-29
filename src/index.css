@@ -1,0 +1,161 @@
+
+body {
+  font-family: "Ubuntu", sans-serif;
+  margin: 0;
+  background-color: hsl(229, 24%, 87%);
+}
+
+
+
+/* HOME STYLES */
+
+
+.home_container{
+  display: flex;
+    background-color: rgb(255, 255, 255);
+    margin-top: 3%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    box-shadow: 20px 20px 20px rgba(47, 18, 18, 0.101);
+    width: 1000px;
+    height: 568px;
+}
+
+
+
+.body_conatiner{
+  background-color: rgba(210, 96, 14, 0);
+    width: 50%;
+    height: 550px;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+}
+
+
+/* SIDETEXTANDICON STYLES */
+
+
+
+.side_content{
+  display: flex;
+    justify-content: center;
+    width: 274px;
+    height: 568px;
+    background-color: rgba(30, 16, 186, 0);
+    background-image: url(./Assets/images/bg-sidebar-desktop.svg);
+}
+
+.circle {
+  position: relative;
+  background-color: rgba(220, 20, 60, 0);
+  width: 20%;
+  color: white;
+  font-weight: 500;
+  height: 50%;
+  margin-top: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.circle1 {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255);
+  border: solid 1px white;
+  display: flex;
+  justify-content: center;
+  color: black;
+}
+
+
+.circle p {
+  margin-top: 10px;
+}
+
+
+
+.steps {
+  position: relative;
+  background-color: rgba(255, 255, 0, 0);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 60%;
+  height: 50%;
+  margin-top: 15%;
+  margin-left: 0%;
+}
+
+.step1, .step2, .step3, .step4 {
+  position: inherit;
+  padding-left: 5px;
+  background-color: rgba(156, 55, 55, 0);
+}
+
+.steps p {
+  margin-bottom: 0px;
+  margin-top: 0px;
+  font-size: 14px;
+  color: hsl(231, 11%, 63%);
+}
+
+.steps span {
+  color: white;
+}
+
+
+/* PERSONAL INFO STYLES */
+
+
+#stepInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+#stepInfo input {
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  border: solid 1px rgba(103, 92, 92, 0.628);
+}
+
+
+.flexError {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.flexError span {
+  padding-top: 19px;
+}
+
+.buttonContainerStepOne {
+  position: relative;
+  background-color: rgba(0, 255, 51, 0);
+  padding-left: 380px;
+  padding-top: 73px;
+}
+
+
+.nextStep {
+  padding: 15px 20px 15px 20px;
+  width: 120px;
+  background-color: hsl(213, 96%, 18%);
+  color: white;
+  border-radius: 5px;
+  border: solid 1px rgba(0, 0, 255, 0);
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.nextStep:hover {
+  background-color: hsla(243, 100%, 62%, 0.423);
+}
