@@ -4,6 +4,7 @@ import iconpro from '../../Assets/images/icon-pro.svg';
 import iconadvanced from '../../Assets/images/icon-advanced.svg';
 import './SelectPlan.css'
 import { StepsContext } from '../context/StepsContext';
+import { SelectPlanContext } from '../context/SelectPlanContext';
 
 const monthlyData = [
     {
@@ -56,19 +57,40 @@ const yearlyData = [
 
 function SelectPlan() {
     const [isChecked, setIsChecked] = useState(false);
+    const [selectedPlan, setSelectedPlan] = useState(null);
+    const [errorstate, setErrorstate] = useState(false)
+    const [activeStates, setActiveStates] = useState(Array(monthlyData.length).fill(false));
 
     const handleCheckboxChange = (event) => {
         setIsChecked(event.target.checked);
+        setActiveStates(Array(monthlyData.length).fill(false))
+        // console.log(activeStates, 'actives stateee')
     };
     const { stepIndex, setStepIndex } = useContext(StepsContext);
+    const { plandetails, setPlandetails, activeStatesplan, setActiveStatesplan } = useContext(SelectPlanContext);
 
-    const handleGoBack = () =>{
+    const handleGoBack = () => {
         setStepIndex(stepIndex - 1)
     }
 
-    const handleNext = () =>{
-        setStepIndex(stepIndex + 1)
+    const handleNext = () => {
+        if (selectedPlan) {
+            setStepIndex(stepIndex + 1)
+            setErrorstate(false)
+        }
     }
+
+    const handlePlanSelect = (planIndex, details) => {
+        // setSelectedPlan(planId);
+        setActiveStates(activeStates?.map((_, index) => index === planIndex));
+         console.log(planIndex, details, 'dddd')
+        // console.log(activeStates, 'activeStates')
+        setPlandetails(details)
+    }
+
+
+
+
 
     return (
         <div>
@@ -79,15 +101,22 @@ function SelectPlan() {
                     You have the option of monthly or yearly billing.
                 </p>
 
-
-
                 <div className="planMonth" id="planMonth">
                     {
 
-                        !isChecked ? monthlyData.map((plan) => (
-                            <button className="planButton" id={plan?.id} key={plan?.id}>
+                        !isChecked ? monthlyData?.map((plan, i) => (
+
+                            <button
+                                className={`${activeStates[i] ? 'activestate' : "planButton"}`}
+
+
+                                id={plan?.id} key={plan?.id} onClick={() => handlePlanSelect(i, plan)}>
+                                    {
+                                    console.log(activeStates[i], 'activeStates[i]--', i)
+                                    }
+
                                 <img src={plan?.image} alt="" />
-                                <p>{plan?.name}</p>
+                                <p className='nametag'  >{plan?.name}</p>
                                 <span id="priceMonth" className="priceMonth">
                                     {plan?.price}
                                 </span>
@@ -95,9 +124,10 @@ function SelectPlan() {
                                     {plan?.plan}
                                 </span>
                             </button>
+
                         )) :
-                            yearlyData?.map((plan) => (
-                                <button className="planButton" id={plan?.id} key={plan?.id}>
+                            yearlyData?.map((plan, i) => (
+                                <button className={`${activeStates[i] ? 'activestate' : "planButton"}`} id={plan?.id} key={plan?.id} onClick={() => handlePlanSelect(i, plan)} >
                                     <img src={plan?.image} alt="" />
                                     <p>{plan?.name}</p>
                                     <span id="priceMonth" className="priceMonth">
@@ -132,8 +162,14 @@ function SelectPlan() {
                 </div>
 
                 <div className="buttonContainerStepTwo">
-                    <button onClick={handleGoBack}  className="goBack">Go back</button>
-                    <button onClick={handleNext} className="nextStep">Next Step</button>
+                    <button onClick={handleGoBack} className="goBack">Go back</button>
+                    <button
+                        onClick={handleNext}
+                        className="nextStep"
+                        disabled={!selectedPlan}
+                    >
+                        Next Step
+                    </button>
                 </div>
             </div>
         </div>

@@ -8,6 +8,7 @@ function Addons() {
     const [checkedItems, setCheckedItems] = useState([])
     const [checkedItemsyearly, setCheckedItemsyearly] = useState([])
     const [defaultstate, setdefaultstate] = useState(false)
+    const [errorstate, setErrorstate] = useState(false)
 
 
     const handleStateChange = () => {
@@ -128,13 +129,20 @@ function Addons() {
     }, [checkedItems, checkedItemsyearly]);
 
     const { stepIndex, setStepIndex } = useContext(StepsContext);
+    const [selectedPlan, setSelectedPlan] = useState(null);
+
+    const handlePlanSelect = (planId) => {
+        setSelectedPlan(planId);
+    }
 
     const handleGoBack = () => {
         setStepIndex(stepIndex - 1)
     }
 
     const handleNext = () => {
-        setStepIndex(stepIndex + 1)
+        if (selectedPlan) {
+            setStepIndex(stepIndex + 1)
+        }
     }
     return (
         <div className="stepAddOn" id="stepAddOn">
