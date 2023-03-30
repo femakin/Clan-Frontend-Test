@@ -13,12 +13,14 @@ function Addons() {
     const { stepIndex, setStepIndex } = useContext(StepsContext);
     const [selectedPlan, setSelectedPlan] = useState(null);
     const { selectedAdon, setSelectedAdon } = useContext(AdsonContext);
+    const [emptyarray, setEmptyarray] = useState(false)
 
 
     function handleChange(event) {
         const item = {
             id: event.target.id,
             value: event.target.value,
+            name: event.target.name
         };
 
         if (event.target.checked) {
@@ -37,6 +39,7 @@ function Addons() {
         const item = {
             id: event.target.id,
             value: event.target.value,
+            name: event.target.name
         };
 
         if (event.target.checked) {
@@ -45,7 +48,7 @@ function Addons() {
             setCheckedItemsyearly(prevState => prevState.filter((x) => x.id !== item.id)); // use functional update
         }
 
-        localStorage.setItem('checkedItems', JSON.stringify(checkedItemsyearly)); // update local storage with the correct state
+        // localStorage.setItem('checkedItems', JSON.stringify(checkedItemsyearly)); // update local storage with the correct state
     }
 
 
@@ -55,7 +58,7 @@ function Addons() {
             tag: <input
                 type="checkbox"
                 id="onlineMois"
-                name="adOnn"
+                name="Online service"
                 value="1"
                 onChange={handleChange}
                 checked={selectedAdon?.map((x => x.value)).includes('1') ? true : false}
@@ -68,7 +71,7 @@ function Addons() {
         {
             tag: <input
                 type="checkbox"
-                name="adOnn"
+                name="Larger storage"
                 value="2"
                 id="storageMois"
                 onChange={handleChange}
@@ -81,7 +84,7 @@ function Addons() {
         {
             tag: <input
                 type="checkbox"
-                name="adOnn"
+                name="Customizable profile"
                 value="3"
                 id="customizableMois"
                 onChange={handleChange}
@@ -89,7 +92,7 @@ function Addons() {
             />,
             service: 'Customizable profile',
             point: 'Custom theme on your profile',
-            rate: '+$2/mo'
+            rate: '+$3/mo'
         },
 
     ]
@@ -99,7 +102,7 @@ function Addons() {
             tag: <input
                 type="checkbox"
                 id="onlineMois"
-                name="adOnn"
+                name='Online service'
                 value="1"
                 onChange={handleChangeyearly}
             />,
@@ -110,7 +113,7 @@ function Addons() {
         {
             tag: <input
                 type="checkbox"
-                name="adOnn"
+                name='Larger storage'
                 value="2"
                 id="storageMois"
                 onChange={handleChange}
@@ -122,7 +125,7 @@ function Addons() {
         {
             tag: <input
                 type="checkbox"
-                name="adOnn"
+                name='Customizable profile'
                 value="2"
                 id="customizableMois"
                 onChange={handleChange}
@@ -140,9 +143,9 @@ function Addons() {
         // const storedItems = JSON.parse(localStorage.getItem('checkedItems')) || [];
         // setCheckedItems(storedItems);
 
-        console.log(selectedAdon, 'selectedAdon')
-        console.log(selectedAdon.map((x => x.value)))
-        console.log(selectedAdon.map((x => x.value)).includes('1'))
+        // console.log(selectedAdon, 'selectedAdon')
+        // console.log(selectedAdon.map((x => x.value)))
+        // console.log(selectedAdon.map((x => x.value)).includes('1'))
 
     }, [selectedAdon]);
 
@@ -157,9 +160,18 @@ function Addons() {
     }
 
     const handleNext = () => {
-        if (selectedPlan) {
+        setEmptyarray(false)
+        // if (selectedPlan) {
+
+        // }
+
+        if (checkedItems.length === 0) {
+            setEmptyarray(true)
+        }else{
             setStepIndex(stepIndex + 1)
+            setEmptyarray(false)
         }
+
     }
     return (
         <div className="stepAddOn" id="stepAddOn">
@@ -213,7 +225,15 @@ function Addons() {
                 <button onClick={handleGoBack} className="goBack">Go back</button>
                 <button onClick={handleNext} className="nextStep">Next Step</button>
             </div>
-
+{
+                emptyarray && <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'red',
+                    fontSize: '12px'
+                }}  >Please, select one add-on</div>
+}
         </div>
     )
 }

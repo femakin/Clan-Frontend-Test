@@ -78,20 +78,15 @@ function SelectPlan() {
 
     const handleNext = () => {
         setErrorstate(true)
-        console.log(activeStatesplan.includes(true), 'activ')
-        console.log(selectedPlan, 'selected plan')
+        // console.log(activeStatesplan.includes(true), 'activ')
+        // console.log(selectedPlan, 'selected plan')
         if (selectedPlan || activeStatesplan.includes(true)) {
             setStepIndex(stepIndex + 1)
             setErrorstate(false)
         }
     }
 
-    // const handlePlanSelect = (planIndex, details) => {
-    //     setActiveStates(activeStates?.map((_, index) => index === planIndex));
-    //     setPlandetails(details)
-    //     setActiveStatesplan(activeStates?.map((_, index) => index === planIndex))
-    //     setSelectedPlan(true)
-    // }
+
 
     const handlePlanSelect = (planIndex, details, isSelected) => {
         setActiveStates(activeStates?.map((_, index) => index === planIndex));
@@ -102,12 +97,12 @@ function SelectPlan() {
     };
 
 
-useEffect(() => {
+// useEffect(() => {
 
-    console.log(selectedstate, 'selectedstate')
-    console.log(isChecked, 'isChecked')
+//     console.log(selectedstate, 'selectedstate')
+//     console.log(isChecked, 'isChecked')
 
-}, [selectedstate])
+// }, [selectedstate])
 
 
 

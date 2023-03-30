@@ -20,9 +20,9 @@ export default function SidetextandIcon({ step_text, main_text, number, style, o
     const { stepIndex, setStepIndex } = useContext(StepsContext);
 
 
-    useEffect(() => {
-        console.log(stepIndex, 'stepIndex')
-    }, [stepIndex])
+    // useEffect(() => {
+    //     console.log(stepIndex, 'stepIndex')
+    // }, [stepIndex])
 
 
 
