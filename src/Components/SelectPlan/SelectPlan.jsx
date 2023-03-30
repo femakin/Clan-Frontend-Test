@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import iconarcade from '../../Assets/images/iconarcade.png';
 import iconpro from '../../Assets/images/icon-pro.svg';
 import iconadvanced from '../../Assets/images/icon-advanced.svg';
+import './SelectPlan.css'
 
 const monthlyData = [
     {
@@ -57,8 +58,8 @@ function SelectPlan() {
 
     const handleCheckboxChange = (event) => {
         setIsChecked(event.target.checked);
-        console.log(event.target.checked);
-        console.log(isChecked);
+        // console.log(event.target.checked);
+        // console.log(isChecked);
     };
 
     return (
@@ -84,14 +85,14 @@ function SelectPlan() {
                                 </span>
                             </button>
                         )) :
-                            yearlyData.map((plan) => (
+                            yearlyData?.map((plan) => (
                                 <button className="planButton" id={plan?.id} key={plan?.id}>
                                     <img src={plan?.image} alt="" />
                                     <p>{plan?.name}</p>
                                     <span id="priceMonth" className="priceMonth">
                                         {plan?.price}
                                     </span>
-                                    <label  className="free">
+                                    <label className="free">
                                         {plan?.plan}
                                     </label>
                                 </button>

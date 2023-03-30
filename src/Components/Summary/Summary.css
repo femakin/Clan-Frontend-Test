@@ -1,0 +1,158 @@
+/* SUMMARY STYLE */
+
+#stepSummary {
+    display: flex;
+    flex-direction: column;
+}
+
+#resumeYear {
+    display: none;
+    flex-direction: column;
+}
+
+#resumeMonth {
+    display: flex;
+    flex-direction: column;
+}
+
+.containerResume {
+    width: 80%;
+    height: 15x 0px;
+    background-color: hsl(229deg 28% 96%);
+    padding: 1px 30px 10px 20px;
+    border-radius: 10px;
+}
+
+.containerResume button {
+    border: none;
+    background-color: rgba(250, 235, 215, 0);
+    text-decoration: underline;
+    cursor: pointer;
+    padding-left: 0px;
+}
+
+.containerResume button:hover {
+    color: hsl(243, 100%, 62%);
+}
+
+.containerResume h4 {
+    margin-bottom: 0px;
+}
+
+.containerResume span {
+    display: block;
+    margin-top: 0px;
+    height: 1px;
+    background-color: hsl(231deg 18% 88%);
+}
+
+.flexResume {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flexResume label {
+    display: flex;
+    align-items: center;
+}
+
+.flexTotal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 0px 0px 0px;
+    margin: 15px 0px 0px 0px;
+    width: 80%;
+    padding: 1px 20px 10px 20px;
+    border-radius: 10px;
+}
+
+.flexTotal span {
+    font-size: 20px;
+    color: hsl(243, 100%, 62%);
+}
+
+.buttonContainerStepFour {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(0, 255, 51, 0);
+    padding-top: 39px;
+}
+
+@media (max-width: 1000px) {
+
+    /* SUMMARY STYLE */
+
+
+    .buttonContainerStepFour {
+        display: flex;
+        justify-content: space-between;
+        background-color: rgba(0, 255, 51, 0);
+        padding-bottom: 39px;
+    }
+
+    .stepSummary h1 {
+        margin-top: 0;
+        margin-left: 37px;
+    }
+
+
+
+    .containerResume button {
+        border: none;
+        background-color: rgba(250, 235, 215, 0);
+        text-decoration: underline;
+        cursor: pointer;
+        padding-left: 0px;
+    }
+
+    .containerResume button:hover {
+        color: hsl(243, 100%, 62%);
+    }
+
+    .containerResume h4 {
+        margin-bottom: 0px;
+    }
+
+    .containerResume span {
+        display: block;
+        margin-top: -7px;
+        height: 1px;
+        background-color: hsl(231deg 18% 88%);
+    }
+
+    .containerResume {
+        width: 80%;
+        height: 15x0px;
+        background-color: hsl(229deg 28% 96%);
+        padding: 1px 30px 10px 20px;
+        border-radius: 10px;
+    }
+
+    .flexTotal {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: -31px -1px 21px 17px;
+    }
+
+    .flexTotal span {
+        font-size: 20px;
+        color: hsl(243, 100%, 62%);
+        margin-right: -4px;
+    }
+
+    .flexResume p {
+        font-size: 12px;
+    }
+
+    .flexResume label {
+        font-size: 14px;
+    }
+
+    #totalPrice {
+        margin-left: -210px;
+    }
+
+
+}

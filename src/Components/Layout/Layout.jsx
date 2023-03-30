@@ -1,13 +1,13 @@
 import React from 'react'
 
 function Layout() {
-  return (
-    <div>
+    return (
+        <div>
 
-    h1
+            h1
 
-    </div>
-  )
+        </div>
+    )
 }
 
 export default Layout

@@ -1,0 +1,124 @@
+/* SIDETEXTANDICON STYLES */
+
+
+
+.side_content {
+    display: flex;
+    justify-content: center;
+    width: 274px;
+    height: 568px;
+    background-color: rgba(30, 16, 186, 0);
+    background-image: url(../../Assets/images/bg-sidebar-desktop.svg);
+}
+
+.circle {
+    position: relative;
+    background-color: rgba(220, 20, 60, 0);
+    width: 20%;
+    color: white;
+    font-weight: 500;
+    height: 50%;
+    margin-top: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.circle1 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255, 0);
+    border: solid 1px white;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+
+
+.circle1-active {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    border: solid 1px white;
+    display: flex;
+    justify-content: center;
+    color: black;
+}
+
+
+
+
+
+
+.circle p {
+    margin-top: 10px;
+}
+
+
+
+.steps {
+    position: relative;
+    background-color: rgba(255, 255, 0, 0);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 60%;
+    height: 50%;
+    margin-top: 15%;
+    margin-left: 0%;
+}
+
+.step1,
+.step2,
+.step3,
+.step4 {
+    position: inherit;
+    padding-left: 5px;
+    background-color: rgba(156, 55, 55, 0);
+}
+
+.steps p {
+    margin-bottom: 0px;
+    margin-top: 0px;
+    font-size: 14px;
+    color: hsl(231, 11%, 63%);
+}
+
+.steps span {
+    color: white;
+}
+
+
+@media (max-width: 1000px) {
+
+
+    .steps {
+        display: none;
+    }
+
+    .circle {
+        position: relative;
+        width: 50%;
+        color: white;
+        font-weight: 500;
+        height: 2%;
+        display: flex;
+        flex-direction: row;
+    }
+
+
+    .side_content {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 172px;
+        background-color: rgba(30, 16, 186, 0);
+        background-image: url(../../Assets/images/bg-sidebar-mobile.svg);
+        border-radius: 10px;
+    }
+}

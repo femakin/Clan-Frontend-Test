@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Button from '../Button/Button'
+import './Addons.css'
 
 function Addons() {
 
@@ -8,7 +9,7 @@ function Addons() {
     const [defaultstate, setdefaultstate] = useState(false)
 
 
-    const handleStateChange = () =>{
+    const handleStateChange = () => {
         setdefaultstate(!defaultstate)
     }
 
@@ -180,7 +181,7 @@ function Addons() {
             }
 
 
-            <Button backtext='Go back' nextstep={'Next Step'} className='buttonContainerStepThree'  />
+            <Button backtext='Go back' nextstep={'Next Step'} className='buttonContainerStepThree' />
         </div>
     )
 }
