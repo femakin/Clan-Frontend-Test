@@ -179,6 +179,140 @@ body {
 }
 
 
+/* SELECT PLAN STYLING   */
+
+
+#stepPlan {
+display: flex;
+  flex-direction: column;
+}
+
+
+.planMonth {
+  display: flex;
+  justify-content: space-between;
+}
+
+.planButton {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  width: 30%;
+  height: 200px;
+  border: solid 1px hsl(229, 24%, 87%);
+  background-color: white;
+  cursor: pointer;
+}
+
+.planButton:hover {
+  border: solid 1px hsl(213, 96%, 18%);
+}
+
+.planButton img {
+  margin-top: 14px;
+  margin-left: 8px;
+}
+
+.planButton p {
+  font-size: 18px;
+  margin-top: 50px;
+  margin-left: 8px;
+  margin-bottom: 8px;
+}
+
+.planButton span {
+  margin-left: 8px;
+  color: hsl(231, 11%, 63%);
+}
+
+
+
+.switch {
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  height: 56px;
+  background-color: hsl(217, 100%, 97%);
+  border-radius: 10px;
+  margin-top: 25px;
+}
+
+
+.check {
+  display: inline-block;
+  position: relative;
+  width: 40px;
+  height: 20px;
+  cursor: pointer;
+  overflow: hidden;
+  margin-top: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.check input {
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  width: 0;
+  height: 0;
+}
+
+.check input+span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: hsl(213, 96%, 18%);
+  border-radius: 20px;
+}
+
+.check input:checked+span {
+  background: hsl(213, 96%, 18%);
+}
+
+.check input+span:before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  transition: all 0.5s;
+}
+
+.check input:checked+span:before {
+  left: 24px;
+}
+
+
+.buttonContainerStepTwo {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(0, 255, 51, 0);
+  padding-top: 75px;
+}
+
+.goBack {
+  border: none;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0);
+  font-size: 16px;
+  color: hsl(231, 11%, 63%);
+}
+
+
+
+
+
+
+
+
 
 /* MOBILE SCREENS */
 
@@ -245,18 +379,19 @@ body {
 }
 
 .circle p {
-  margin-top: 5px;
+  /* margin-top: 5px; */
 }
 
 .circle1 {
-  width: 30px;
+  /* width: 30px;
   height: 30px;
   border-radius: 20px;
   background-color: rgb(255, 255, 255);
   border: solid 1px white;
   display: flex;
   justify-content: center;
-  color: black;
+  color: black; */
+
 }
 
 

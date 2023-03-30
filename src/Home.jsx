@@ -1,5 +1,6 @@
 import React from 'react'
 import PersonalInfo from './Components/PersonalInfo/PersonalInfo'
+import SelectPlan from './Components/SelectPlan/SelectPlan'
 import SidetextandIcon from './Components/SideMenuText/SidetextandIcon'
 
 function Home() {
@@ -11,13 +12,12 @@ function Home() {
                 <aside className='aside_container' >
 
                     <SidetextandIcon number='1' step_text='STEP 1' main_text='YOUR INFO' />
-                    {/* <SidetextandIcon  /> */}
-
 
                 </aside>
 
                 <section className='body_conatiner'  >
-                    <PersonalInfo />
+                    {/* <PersonalInfo /> */}
+                    <SelectPlan/>
                 </section>
 
 
