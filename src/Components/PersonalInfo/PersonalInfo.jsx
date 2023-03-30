@@ -13,8 +13,6 @@ function PersonalInfo() {
             </p>
 
             <Input  />
-
-
             <Button className='buttonContainerStepOne' className2='nextStep' text='Next Step' />
         </div>
 

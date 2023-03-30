@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './style.css'
 
 export default function SidetextandIcon({ step_text, main_text, number, style, onClick }) {
     const steps = [

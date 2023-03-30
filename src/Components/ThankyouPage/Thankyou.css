@@ -1,0 +1,16 @@
+#stepThankYou {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 150px;
+}
+
+#stepThankYou img {
+    width: 80px;
+}
+
+@media (max-width: 1000px) {
+
+
+
+}

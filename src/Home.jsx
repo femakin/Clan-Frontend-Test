@@ -1,7 +1,10 @@
 import React from 'react'
+import Addons from './Components/Addons/Addons'
 import PersonalInfo from './Components/PersonalInfo/PersonalInfo'
 import SelectPlan from './Components/SelectPlan/SelectPlan'
 import SidetextandIcon from './Components/SideMenuText/SidetextandIcon'
+import Summary from './Components/Summary/Summary'
+import Thankyou from './Components/ThankyouPage/Thankyou'
 
 function Home() {
     return (
@@ -16,8 +19,11 @@ function Home() {
                 </aside>
 
                 <section className='body_conatiner'  >
-                    {/* <PersonalInfo /> */}
-                    <SelectPlan/>
+                    <PersonalInfo />
+                    {/* <SelectPlan/> */}
+                    {/* <Addons/> */}
+                    {/* <Summary/> */}
+                    {/* <Thankyou/> */}
                 </section>
 
 
