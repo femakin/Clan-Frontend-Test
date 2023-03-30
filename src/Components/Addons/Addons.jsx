@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Button from '../Button/Button'
+import { AdsonContext } from '../context/Addons'
 import { StepsContext } from '../context/StepsContext'
 import './Addons.css'
 
@@ -8,12 +9,11 @@ function Addons() {
     const [checkedItems, setCheckedItems] = useState([])
     const [checkedItemsyearly, setCheckedItemsyearly] = useState([])
     const [defaultstate, setdefaultstate] = useState(false)
-    const [errorstate, setErrorstate] = useState(false)
 
+    const { stepIndex, setStepIndex } = useContext(StepsContext);
+    const [selectedPlan, setSelectedPlan] = useState(null);
+    const { selectedAdon, setSelectedAdon } = useContext(AdsonContext);
 
-    const handleStateChange = () => {
-        setdefaultstate(!defaultstate)
-    }
 
     function handleChange(event) {
         const item = {
@@ -22,11 +22,16 @@ function Addons() {
         };
 
         if (event.target.checked) {
-            setCheckedItems([...checkedItems, item]);
+            setCheckedItems(prevState => [...prevState, item]); // use functional update
+            setSelectedAdon(prevState => [...prevState, item])
         } else {
-            setCheckedItems(checkedItems.filter((x) => x.id !== item.id));
+            setCheckedItems(prevState => prevState.filter((x) => x.id !== item.id)); // use functional update
+            setSelectedAdon(prevState => prevState.filter((x) => x.id !== item.id))
         }
+
+
     }
+
 
     function handleChangeyearly(event) {
         const item = {
@@ -35,11 +40,15 @@ function Addons() {
         };
 
         if (event.target.checked) {
-            setCheckedItemsyearly([...checkedItemsyearly, item]);
+            setCheckedItemsyearly(prevState => [...prevState, item]); // use functional update
         } else {
-            setCheckedItemsyearly(checkedItemsyearly.filter((x) => x.id !== item.id));
+            setCheckedItemsyearly(prevState => prevState.filter((x) => x.id !== item.id)); // use functional update
         }
+
+        localStorage.setItem('checkedItems', JSON.stringify(checkedItemsyearly)); // update local storage with the correct state
     }
+
+
 
     const monthlydata = [
         {
@@ -49,6 +58,8 @@ function Addons() {
                 name="adOnn"
                 value="1"
                 onChange={handleChange}
+                checked={selectedAdon?.map((x => x.value)).includes('1') ? true : false}
+
             />,
             service: 'Online service',
             point: 'Access to multiplayer games',
@@ -61,6 +72,7 @@ function Addons() {
                 value="2"
                 id="storageMois"
                 onChange={handleChange}
+                checked={selectedAdon?.map((x => x.value)).includes('2') ? true : false}
             />,
             service: 'Larger storage',
             point: '1TB of cloud save',
@@ -70,9 +82,10 @@ function Addons() {
             tag: <input
                 type="checkbox"
                 name="adOnn"
-                value="2"
+                value="3"
                 id="customizableMois"
                 onChange={handleChange}
+                checked={selectedAdon?.map((x => x.value)).includes('3') ? true : false}
             />,
             service: 'Customizable profile',
             point: 'Custom theme on your profile',
@@ -124,12 +137,16 @@ function Addons() {
 
 
     useEffect(() => {
-        // console.log('Checked Items:', checkedItems);
-        // console.log('Checked Items:', checkedItemsyearly);
-    }, [checkedItems, checkedItemsyearly]);
+        // const storedItems = JSON.parse(localStorage.getItem('checkedItems')) || [];
+        // setCheckedItems(storedItems);
 
-    const { stepIndex, setStepIndex } = useContext(StepsContext);
-    const [selectedPlan, setSelectedPlan] = useState(null);
+        console.log(selectedAdon, 'selectedAdon')
+        console.log(selectedAdon.map((x => x.value)))
+        console.log(selectedAdon.map((x => x.value)).includes('1'))
+
+    }, [selectedAdon]);
+
+
 
     const handlePlanSelect = (planId) => {
         setSelectedPlan(planId);
@@ -157,10 +174,7 @@ function Addons() {
                         <div id="addonMois" key={i} >
                             <div className="addOnButton">
                                 <div className="regroup">
-
                                     {x.tag}
-
-
                                     <div className="addOn">
                                         <p className="AddSize">{x.service}</p>
                                         <span>{x.point}</span>
@@ -191,7 +205,6 @@ function Addons() {
                                     <p className="prix">{x.rate}</p>
                                 </div>
 
-
                             </div>
                         )
                     })
@@ -201,7 +214,6 @@ function Addons() {
                 <button onClick={handleNext} className="nextStep">Next Step</button>
             </div>
 
-            {/* <Button backtext='Go back' nextstep={'Next Step'} className='buttonContainerStepThree' /> */}
         </div>
     )
 }

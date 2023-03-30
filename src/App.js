@@ -1,4 +1,5 @@
 import './App.css';
+import { AdsonProvider } from './Components/context/Addons';
 import { PersonalInfoProvider } from './Components/context/PersonalInfoContext';
 import { SelectPlanProvider } from './Components/context/SelectPlanContext';
 import { StepsContextProvider } from './Components/context/StepsContext';
@@ -10,10 +11,11 @@ function App() {
    <PersonalInfoProvider>
         <StepsContextProvider>
           <SelectPlanProvider>
+            <AdsonProvider>
           <Home />
+            </AdsonProvider>
           </SelectPlanProvider>
         </StepsContextProvider>
-
    </PersonalInfoProvider>
   </div>
   );

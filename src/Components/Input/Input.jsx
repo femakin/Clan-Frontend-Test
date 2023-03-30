@@ -36,14 +36,14 @@ function Input({ label, name, type, value, onChange, placeholder }) {
 
 
     const onSubmit = (data) => {
-        console.log(data, 'datatat');
+        // console.log(data, 'datatat');
         setPersonalinfo(data)
         setStepIndex( stepIndex + 1 )
     };
 
     useEffect(() => {
-    console.log(personalinfo, 'perinfoooo')
-    console.log()
+    // console.log(personalinfo, 'perinfoooo')
+    // console.log()
     }, [personalinfo])
 
 
