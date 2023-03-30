@@ -7,7 +7,7 @@ import './Addons.css'
 function Addons() {
 
     const [checkedItems, setCheckedItems] = useState([])
-    const [setCheckedItemsyearly] = useState([])
+    const [checkedItemsyearly, setCheckedItemsyearly] = useState([])
 
 
     const { stepIndex, setStepIndex } = useContext(StepsContext);
@@ -23,9 +23,10 @@ function Addons() {
             name: event.target.name
         };
 
-        if (event.target.checked) {
+        if (event?.target?.checked) {
             setCheckedItems(prevState => [...prevState, item]); // use functional update
             setSelectedAdon(prevState => [...prevState, item])
+            console.log(prevState => [...prevState, item], 'ddd')
         } else {
             setCheckedItems(prevState => prevState.filter((x) => x.id !== item.id)); // use functional update
             setSelectedAdon(prevState => prevState.filter((x) => x.id !== item.id))
@@ -57,13 +58,13 @@ function Addons() {
     const handleNext = () => {
         setEmptyarray(false)
 
-        if (checkedItems.length === 0) {
+        if (checkedItems?.length === 0) {
             setEmptyarray(true)
         } else {
             setStepIndex(stepIndex + 1)
             setEmptyarray(false)
         }
-
+        setEmptyarray(false)
     }
 
     const monthlydata = [
@@ -74,7 +75,7 @@ function Addons() {
                 name="Online service"
                 value="1"
                 onChange={handleChange}
-                checked={selectedAdon?.map((x => x.value)).includes('1') || selectedAdon?.map((x => x.value)).includes('10') ? true : false}
+
 
             />,
             service: 'Online service',
@@ -88,7 +89,7 @@ function Addons() {
                 value="2"
                 id="storageMois"
                 onChange={handleChange}
-                checked={selectedAdon?.map((x => x.value)).includes('2') || selectedAdon?.map((x => x.value)).includes('20') ? true : false}
+
             />,
             service: 'Larger storage',
             point: '1TB of cloud save',
@@ -101,7 +102,7 @@ function Addons() {
                 value="3"
                 id="customizableMois"
                 onChange={handleChange}
-                checked={selectedAdon?.map((x => x.value)).includes('3') || selectedAdon?.map((x => x.value)).includes('30') ? true : false}
+
             />,
             service: 'Customizable profile',
             point: 'Custom theme on your profile',
@@ -118,6 +119,7 @@ function Addons() {
                 name='Online service'
                 value="10"
                 onChange={handleChangeyearly}
+
             />,
             service: 'Online service',
             point: 'Access to multiplayer games',
@@ -130,6 +132,7 @@ function Addons() {
                 value="20"
                 id="storageMois"
                 onChange={handleChange}
+
             />,
             service: 'Larger storage',
             point: '1TB of cloud save',
@@ -142,6 +145,7 @@ function Addons() {
                 value="20"
                 id="customizableMois"
                 onChange={handleChange}
+
             />,
             service: 'Customizable profile',
             point: 'Custom theme on your profile',
@@ -206,7 +210,7 @@ function Addons() {
                 <button onClick={handleNext} className="nextStep">Next Step</button>
             </div>
             {
-                emptyarray && <div style={{
+                emptyarray && checkedItems.length === 0 && <div style={{
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',

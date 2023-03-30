@@ -8,14 +8,13 @@ import { StepsContext } from '../context/StepsContext';
 
 function Input() {
 
+
     const schema = yup.object().shape({
         name: yup.string().required('This field is required'),
         email: yup.string().email('Invalid email').required('This field is required'),
         phone: yup.string()
-            .required('This field is required').matches(
-                /^\d{10}$/,
-                'Invalid phone number (must be 10 digits, no dashes or spaces)'
-            ),
+            .required('This field is required')
+            .matches(/^\+?(234)?\d{10}$/, 'Invalid phone number (must be a Nigerian phone number)'),
     });
 
 
@@ -83,7 +82,7 @@ function Input() {
                     type="text"
                     name="phone"
                     id="infoNumber"
-                    placeholder="e.g. +1 234 567 890"
+                    placeholder="e.g. +234 703 95 234 58"
                     {...register("phone")}
                     defaultValue={personalinfo?.phone}
                 />

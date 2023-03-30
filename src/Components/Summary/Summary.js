@@ -50,14 +50,16 @@ function Summary() {
                         <span></span>
 
                         {
-                            selectedAdon.map((x, i) => {
-                                return (
-                                    <div key={i} className="flexResume">
-                                        <p>{x.name}</p>
-                                        <label htmlFor="" id="onlinePrice">+{x.value}$</label>
-                                    </div>
-                                )
-                            })
+                            selectedAdon.filter((x, i, self) => self.findIndex(y => y?.name === x?.name) === i)
+                                .map((x, i) => {
+                                    return (
+                                        <div key={i} className="flexResume">
+                                            <p>{x.name}</p>
+                                            <label htmlFor="" id="onlinePrice">+{x.value}$</label>
+                                        </div>
+                                    )
+                                })
+
                         }
                     </div>
                 </div>
