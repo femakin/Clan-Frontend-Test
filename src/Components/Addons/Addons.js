@@ -43,11 +43,12 @@ function Addons() {
         };
 
         if (event.target.checked) {
-            setCheckedItemsyearly(prevState => [...prevState, item]); // use functional update
+            setCheckedItems(prevState => [...prevState, item]); // use functional update
+            setSelectedAdon(prevState => [...prevState, item])
         } else {
-            setCheckedItemsyearly(prevState => prevState.filter((x) => x.id !== item.id)); // use functional update
+            setCheckedItems(prevState => prevState.filter((x) => x.id !== item.id)); // use functional update
+            setSelectedAdon(prevState => prevState.filter((x) => x.id !== item.id))
         }
-
     }
 
     const handleGoBack = () => {
@@ -55,14 +56,15 @@ function Addons() {
     }
 
     const handleNext = () => {
-        setEmptyarray(false)
+        // setEmptyarray(false)
 
-        if (checkedItems.length === 0) {
-            setEmptyarray(true)
-        } else {
-            setStepIndex(stepIndex + 1)
-            setEmptyarray(false)
-        }
+        // if (checkedItems.length === 0) {
+        //     setEmptyarray(true)
+        // } else {
+        //     setStepIndex(stepIndex + 1)
+        //     setEmptyarray(false)
+        // }
+        setStepIndex(stepIndex + 1)
 
     }
 
@@ -205,15 +207,7 @@ function Addons() {
                 <button onClick={handleGoBack} className="goBack">Go back</button>
                 <button onClick={handleNext} className="nextStep">Next Step</button>
             </div>
-            {
-                emptyarray && <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'red',
-                    fontSize: '12px'
-                }}  >Please, select one add-on</div>
-            }
+
         </div>
     )
 }

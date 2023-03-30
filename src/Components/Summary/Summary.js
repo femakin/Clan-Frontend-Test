@@ -48,6 +48,9 @@ function Summary() {
                         </div>
                         <br />
                         <span></span>
+                        {
+                            console.log(selectedAdon, 'selectedAdon')
+                        }
 
                         {
                             selectedAdon.filter((x, i, self) => self.findIndex(y => y?.name === x?.name) === i)
