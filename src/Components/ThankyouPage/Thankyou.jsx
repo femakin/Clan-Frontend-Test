@@ -4,7 +4,7 @@ import './Thankyou.css'
 
 function Thankyou() {
     return (
-        <div class="stepThankYou" id="stepThankYou">
+        <div className="stepThankYou" id="stepThankYou">
             <img src={thankyou} alt="" />
             <h1>Thank you!</h1>
             <p>

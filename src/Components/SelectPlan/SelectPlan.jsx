@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import iconarcade from '../../Assets/images/iconarcade.png';
 import iconpro from '../../Assets/images/icon-pro.svg';
 import iconadvanced from '../../Assets/images/icon-advanced.svg';
 import './SelectPlan.css'
+import { StepsContext } from '../context/StepsContext';
 
 const monthlyData = [
     {
@@ -58,9 +59,16 @@ function SelectPlan() {
 
     const handleCheckboxChange = (event) => {
         setIsChecked(event.target.checked);
-        // console.log(event.target.checked);
-        // console.log(isChecked);
     };
+    const { stepIndex, setStepIndex } = useContext(StepsContext);
+
+    const handleGoBack = () =>{
+        setStepIndex(stepIndex - 1)
+    }
+
+    const handleNext = () =>{
+        setStepIndex(stepIndex + 1)
+    }
 
     return (
         <div>
@@ -70,6 +78,9 @@ function SelectPlan() {
                 <p className="descrition">
                     You have the option of monthly or yearly billing.
                 </p>
+
+
+
                 <div className="planMonth" id="planMonth">
                     {
 
@@ -101,6 +112,11 @@ function SelectPlan() {
                     }
                 </div>
 
+
+
+
+
+
                 <div className="switch">
                     <p className="monthly">Monthly</p>
                     <label className="check">
@@ -116,8 +132,8 @@ function SelectPlan() {
                 </div>
 
                 <div className="buttonContainerStepTwo">
-                    <button className="goBack">Go back</button>
-                    <button className="nextStep">Next Step</button>
+                    <button onClick={handleGoBack}  className="goBack">Go back</button>
+                    <button onClick={handleNext} className="nextStep">Next Step</button>
                 </div>
             </div>
         </div>

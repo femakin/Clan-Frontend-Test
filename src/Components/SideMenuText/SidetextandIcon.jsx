@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { StepsContext } from '../context/StepsContext';
 import './style.css'
 
 export default function SidetextandIcon({ step_text, main_text, number, style, onClick }) {
@@ -12,9 +13,17 @@ export default function SidetextandIcon({ step_text, main_text, number, style, o
 
     const [activeIndex, setActiveIndex] = useState(0);
 
-    const handleCircleClick = (index) => {
-        setActiveIndex(index);
-    };
+    // const handleCircleClick = (index) => {
+    //     setActiveIndex(index);
+    // };
+
+    const { stepIndex, setStepIndex } = useContext(StepsContext);
+
+
+    useEffect(() => {
+        console.log(stepIndex, 'stepIndex')
+    }, [stepIndex])
+
 
 
     return (
@@ -24,7 +33,7 @@ export default function SidetextandIcon({ step_text, main_text, number, style, o
                 <div className="circle">
 
                     {Array?.from({ length: 4 }, (_, index) => (
-                        <div className={`circle1 ${activeIndex === index ? "circle1-active" : ""}`} key={index} onClick={() => handleCircleClick(index)}>
+                        <div className={`circle1 ${stepIndex === index ? "circle1-active" : ""}`} key={index} >
                             <p>{index + 1}</p>
                         </div>
                     ))}

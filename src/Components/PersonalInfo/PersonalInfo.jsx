@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '../Button/Button'
+// import Button from '../Button/Button'
 import Input from '../Input/Input'
 import './PersonalInfo.css'
 
@@ -14,7 +14,7 @@ function PersonalInfo() {
             </p>
 
             <Input />
-            <Button className='buttonContainerStepOne' className2='nextStep' text='Next Step' nextstep={'Next Step'} />
+
         </div>
 
     )

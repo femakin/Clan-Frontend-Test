@@ -1,13 +1,13 @@
 import React from 'react'
 
-function Button({ text, style, className, className2, onclick, backtext, nextstep }) {
+function Button({ text, type, style, className, className2, onclick, backtext, nextstep }) {
     return (
         // <div>
 
         <div className={className}>
-            <button className="goBack">{backtext}</button>
+            <button type={type} className="goBack">{backtext}</button>
 
-            <button className="nextStep">{nextstep}</button>
+            <button type={type} className="nextStep">{nextstep}</button>
         </div>
 
         // </div>

@@ -47,6 +47,32 @@
     background-color: hsla(243, 100%, 62%, 0.423);
 }
 
+
+#errorName {
+    color: red;
+    font-size: 12px;
+}
+
+#errorNum {
+    color: red;
+    font-size: 12px;
+}
+
+#errorMail {
+    color: red;
+    font-size: 12px;
+}
+
+.flexError {
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.flexError span {
+    padding-top: 19px;
+}
+
 @media (max-width: 1000px) {
 
 

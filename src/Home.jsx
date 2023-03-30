@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Addons from './Components/Addons/Addons'
+import { StepsContext } from './Components/context/StepsContext'
 import PersonalInfo from './Components/PersonalInfo/PersonalInfo'
 import SelectPlan from './Components/SelectPlan/SelectPlan'
 import SidetextandIcon from './Components/SideMenuText/SidetextandIcon'
@@ -7,6 +8,7 @@ import Summary from './Components/Summary/Summary'
 import Thankyou from './Components/ThankyouPage/Thankyou'
 
 function Home() {
+    const { stepIndex, setStepIndex } = useContext(StepsContext);
     return (
         <div className='main_conatiner' >
 
@@ -19,11 +21,15 @@ function Home() {
                 </aside>
 
                 <section className='body_conatiner'  >
-                    <PersonalInfo />
-                    {/* <SelectPlan/> */}
-                    {/* <Addons/> */}
-                    {/* <Summary/> */}
-                    {/* <Thankyou/> */}
+
+
+                    {
+                        stepIndex === 0 ? <PersonalInfo /> :
+                            stepIndex === 1 ? <SelectPlan /> :
+                                stepIndex === 2 ? < Addons /> :
+                                    stepIndex === 3 ? < Summary /> :
+                                        stepIndex === 4 ? <Thankyou /> : <PersonalInfo />
+                    }
                 </section>
 
 

@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Button from '../Button/Button'
+import { StepsContext } from '../context/StepsContext'
 import './Addons.css'
 
 function Addons() {
@@ -126,7 +127,15 @@ function Addons() {
         // console.log('Checked Items:', checkedItemsyearly);
     }, [checkedItems, checkedItemsyearly]);
 
+    const { stepIndex, setStepIndex } = useContext(StepsContext);
 
+    const handleGoBack = () => {
+        setStepIndex(stepIndex - 1)
+    }
+
+    const handleNext = () => {
+        setStepIndex(stepIndex + 1)
+    }
     return (
         <div className="stepAddOn" id="stepAddOn">
             <h1>Pick add-ons</h1>
@@ -179,9 +188,12 @@ function Addons() {
                         )
                     })
             }
+            <div className="buttonContainerStepThree">
+                <button onClick={handleGoBack} className="goBack">Go back</button>
+                <button onClick={handleNext} className="nextStep">Next Step</button>
+            </div>
 
-
-            <Button backtext='Go back' nextstep={'Next Step'} className='buttonContainerStepThree' />
+            {/* <Button backtext='Go back' nextstep={'Next Step'} className='buttonContainerStepThree' /> */}
         </div>
     )
 }

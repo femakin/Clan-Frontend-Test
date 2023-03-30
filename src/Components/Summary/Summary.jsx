@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Button from '../Button/Button'
+import { StepsContext } from '../context/StepsContext';
 import './Summary.css'
 
+
 function Summary() {
+
+    const { stepIndex, setStepIndex } = useContext(StepsContext);
+
+    const handleGoBack = () => {
+        setStepIndex(stepIndex - 1)
+    }
+
+    const handleNext = () => {
+        setStepIndex(stepIndex + 1)
+    }
     return (
         <div className="stepSummary" id="stepSummary">
             <h1>Finishing up</h1>
@@ -41,7 +53,12 @@ function Summary() {
                     <span className="dollar">11 $</span>
                 </div>
 
-                <Button backtext='Go back' nextstep={'Confirm'} className='buttonContainerStepFour' />
+                {/* <Button backtext='Go back' onclick={handleGoBack}   nextstep={'Confirm'} className='buttonContainerStepFour' /> */}
+
+                <div className="buttonContainerStepFour">
+                    <button onClick={handleGoBack} className="goBack">Go back</button>
+                    <button onClick={handleNext} className="nextStep">Next Step</button>
+                </div>
 
             </div>
         </div>
