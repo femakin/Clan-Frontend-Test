@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import iconarcade from '../../Assets/images/iconarcade.png'
 import iconpro from '../../Assets/images/icon-pro.svg'
 import iconadvanced from '../../Assets/images/icon-advanced.svg'
 
 function SelectPlan() {
+    const [isChecked, setIsChecked] = useState(false);
+
+    const handleCheckboxChange = (event) => {
+        setIsChecked(event.target.checked);
+        console.log(event.target.checked)
+        console.log(isChecked)
+    };
   return (
     <div>
 
@@ -16,7 +23,7 @@ function SelectPlan() {
               <div className="planMonth" id="planMonth">
                   <button className="planButton" id="moisArcade" >
                       <img src={iconarcade} alt="" />
-                      <p>Arcade</p>
+
                       <span id="priceMonth" className="priceMonth">9$/mo</span>
                   </button>
 
@@ -36,30 +43,12 @@ function SelectPlan() {
                   </button>
 
               </div>
-              {/* <div className="planMonth" id="planYear">
-                  <button className="planButton" id="anneeArcade" >
-                      <img src="../../Assets/images/icon-arcade.svg" alt="" />
-                      <p>Arcade</p>
-                      <span className="priceYear">90$/yr</span>
-                      <label className="free">2 months free</label>
-                  </button>
-                  <button className="planButton" id="anneeAdvenced" >
-                      <img src="../../Assets/images/icon-advanced.svg" alt="" />
-                      <p>Advenced</p>
-                      <span className="priceYear">120$/yr</span>
-                      <label className="free">2 months free</label>
-                  </button>
-                  <button className="planButton" id="anneePro" >
-                      <img src="../../Assets/images/icon-pro.svg" alt="" />
-                      <p>Pro</p>
-                      <span className="priceYear">150$/yr</span>
-                      <label className="free">2 months free</label>
-                  </button>
-              </div> */}
+
               <div className="switch">
                   <p className="monthly">Monthly</p>
                   <label className="check">
-                      <input type="checkbox" id="switch"   />
+                      <input type="checkbox" id="switch" checked={isChecked}
+                          onChange={handleCheckboxChange}   />
                       <span></span>
                   </label>
                   <p className="yearly">Yearly</p>
