@@ -8,7 +8,7 @@ import Summary from './Components/Summary/Summary'
 import Thankyou from './Components/ThankyouPage/Thankyou'
 
 function Home() {
-    const { stepIndex, setStepIndex } = useContext(StepsContext);
+    const { stepIndex } = useContext(StepsContext);
     return (
         <div className='main_conatiner' >
 

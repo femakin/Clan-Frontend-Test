@@ -4,9 +4,6 @@ export const AdsonContext = createContext();
 
 export const AdsonProvider = ({ children }) => {
     const [selectedAdon, setSelectedAdon] = useState([])
-
-
-
     return (
         <AdsonContext.Provider
             value={{

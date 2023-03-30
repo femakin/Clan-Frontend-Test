@@ -1,14 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import Button from '../Button/Button'
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { PersonalInfoContext } from '../context/PersonalInfoContext';
 import { StepsContext } from '../context/StepsContext';
 
-function Input({ label, name, type, value, onChange, placeholder }) {
-
-    // const [stepIndex, setStepIndex] = useState(0);
+function Input() {
 
     const schema = yup.object().shape({
         name: yup.string().required('This field is required'),
@@ -22,7 +20,7 @@ function Input({ label, name, type, value, onChange, placeholder }) {
 
 
     const {
-        control,
+
         register,
         handleSubmit,
         formState: { errors },
@@ -31,21 +29,14 @@ function Input({ label, name, type, value, onChange, placeholder }) {
         resolver: yupResolver(schema),
     });
 
-    const {  personalinfo, setPersonalinfo } = useContext(PersonalInfoContext);
+    const { personalinfo, setPersonalinfo } = useContext(PersonalInfoContext);
     const { stepIndex, setStepIndex } = useContext(StepsContext);
 
 
     const onSubmit = (data) => {
-        // console.log(data, 'datatat');
         setPersonalinfo(data)
-        setStepIndex( stepIndex + 1 )
+        setStepIndex(stepIndex + 1)
     };
-
-    useEffect(() => {
-    // console.log(personalinfo, 'perinfoooo')
-    // console.log()
-    }, [personalinfo])
-
 
 
 
@@ -57,16 +48,14 @@ function Input({ label, name, type, value, onChange, placeholder }) {
 
                 <div className="flexError">
                     <p>Name</p>
-                    { <span id="errorName">{errors?.name?.message}</span> }
+                    {<span id="errorName">{errors?.name?.message}</span>}
                 </div>
                 <input
                     type="text"
                     name="name"
                     id="infoName"
                     placeholder="e.g. Stephen king"
-                    // value={personalinfo?.name}
-                    // onChange={handleChange}
-                    // ref={register}
+
                     {...register("name")}
                     defaultValue={personalinfo?.name}
                 />
@@ -81,7 +70,6 @@ function Input({ label, name, type, value, onChange, placeholder }) {
                     name="email"
                     id="infoMail"
                     placeholder="e.g. stephenking@lorem.com"
-                    // ref={register}
                     {...register("email")}
                     defaultValue={personalinfo?.email}
                 />
@@ -96,13 +84,10 @@ function Input({ label, name, type, value, onChange, placeholder }) {
                     name="phone"
                     id="infoNumber"
                     placeholder="e.g. +1 234 567 890"
-                    // ref={register}
                     {...register("phone")}
                     defaultValue={personalinfo?.phone}
                 />
-
-
-                <Button type="submit"  className='buttonContainerStepOne' className2='nextStep' text='Next Step' nextstep={'Next Step'}    />
+                <Button type="submit" className='buttonContainerStepOne' className2='nextStep' text='Next Step' nextstep={'Next Step'} />
             </form>
         </div>
     )

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import iconarcade from '../../Assets/images/iconarcade.png';
 import iconpro from '../../Assets/images/icon-pro.svg';
 import iconadvanced from '../../Assets/images/icon-advanced.svg';
@@ -36,21 +36,21 @@ const yearlyData = [
         id: 'moisArcade',
         image: iconarcade,
         name: 'Arcade',
-        price: '90$/mo',
+        price: '90$/yr',
         plan: '2 months free'
     },
     {
         id: 'moisAdvenced',
         image: iconadvanced,
         name: 'Advanced',
-        price: '120$/mo',
+        price: '120$/yr',
         plan: '2 months free'
     },
     {
         id: 'moisPro',
         image: iconpro,
         name: 'Pro',
-        price: '150$/mo',
+        price: '150$/yr',
         plan: '2 months free'
     }
 ];
@@ -61,7 +61,7 @@ function SelectPlan() {
     const [errorstate, setErrorstate] = useState(false)
     const [activeStates, setActiveStates] = useState(Array(3).fill(false));
     const { stepIndex, setStepIndex } = useContext(StepsContext);
-    const { plandetails, setPlandetails, activeStatesplan, setActiveStatesplan, selectedstate, setSelectedstate } = useContext(SelectPlanContext);
+    const { setPlandetails, activeStatesplan, setActiveStatesplan, setSelectedstate } = useContext(SelectPlanContext);
 
 
     const handleCheckboxChange = (event) => {
@@ -78,8 +78,6 @@ function SelectPlan() {
 
     const handleNext = () => {
         setErrorstate(true)
-        // console.log(activeStatesplan.includes(true), 'activ')
-        // console.log(selectedPlan, 'selected plan')
         if (selectedPlan || activeStatesplan.includes(true)) {
             setStepIndex(stepIndex + 1)
             setErrorstate(false)
@@ -95,16 +93,6 @@ function SelectPlan() {
         setSelectedPlan(true);
         setSelectedstate(isSelected);
     };
-
-
-// useEffect(() => {
-
-//     console.log(selectedstate, 'selectedstate')
-//     console.log(isChecked, 'isChecked')
-
-// }, [selectedstate])
-
-
 
     return (
         <div>
@@ -151,11 +139,6 @@ function SelectPlan() {
                     }
                 </div>
 
-
-
-
-
-
                 <div className="switch">
                     <p className="monthly">Monthly</p>
                     <label className="check">
@@ -175,13 +158,12 @@ function SelectPlan() {
                     <button
                         onClick={handleNext}
                         className="nextStep"
-                        // disabled={!selectedPlan}
                     >
                         Next Step
                     </button>
 
                 </div>
-             {
+                {
                     errorstate && <div style={{
                         display: 'flex',
                         justifyContent: 'center',
@@ -191,7 +173,7 @@ function SelectPlan() {
                         fontSize: '12px',
                         color: 'red'
                     }} >Please select your billing plan</span></div>
-             }
+                }
             </div>
         </div>
     );

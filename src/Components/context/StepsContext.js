@@ -5,8 +5,6 @@ export const StepsContext = createContext();
 export const StepsContextProvider = ({ children }) => {
 
     const [stepIndex, setStepIndex] = useState(0);
-
-
     return (
         <StepsContext.Provider
             value={{

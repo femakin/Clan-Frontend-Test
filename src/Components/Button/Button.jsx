@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Button({ text, type, style, className, className2, onclick, backtext, nextstep }) {
+function Button({ type, className, backtext, nextstep }) {
     return (
         // <div>
 

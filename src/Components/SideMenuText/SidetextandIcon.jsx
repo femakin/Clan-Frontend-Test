@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import { StepsContext } from '../context/StepsContext';
 import './style.css'
 
@@ -11,20 +11,7 @@ export default function SidetextandIcon({ step_text, main_text, number, style, o
     ];
 
 
-    const [activeIndex, setActiveIndex] = useState(0);
-
-    // const handleCircleClick = (index) => {
-    //     setActiveIndex(index);
-    // };
-
-    const { stepIndex, setStepIndex } = useContext(StepsContext);
-
-
-    // useEffect(() => {
-    //     console.log(stepIndex, 'stepIndex')
-    // }, [stepIndex])
-
-
+    const { stepIndex } = useContext(StepsContext);
 
     return (
         <div>

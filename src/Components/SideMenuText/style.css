@@ -1,7 +1,5 @@
 /* SIDETEXTANDICON STYLES */
 
-
-
 .side_content {
     display: flex;
     justify-content: center;
@@ -37,8 +35,6 @@
     color: white;
 }
 
-
-
 .circle1-active {
     width: 40px;
     height: 40px;
@@ -51,14 +47,9 @@
 }
 
 
-
-
-
-
 .circle p {
     margin-top: 10px;
 }
-
 
 
 .steps {

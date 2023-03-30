@@ -1,8 +1,5 @@
-import React, { useContext, useEffect } from 'react'
-import Button from '../Button/Button'
-import { AdsonContext } from '../context/Addons';
-import { PersonalInfoContext } from '../context/PersonalInfoContext';
-import { SelectPlanContext } from '../context/SelectPlanContext';
+import React, { useContext} from 'react'
+import { AdsonContext } from '../context/Addons'; import { SelectPlanContext } from '../context/SelectPlanContext';
 import { StepsContext } from '../context/StepsContext';
 import './Summary.css'
 
@@ -10,9 +7,9 @@ import './Summary.css'
 function Summary() {
 
     const { stepIndex, setStepIndex } = useContext(StepsContext);
-    const { selectedAdon, setSelectedAdon } = useContext(AdsonContext);
-    const { plandetails, setPlandetails, activeStatesplan, setActiveStatesplan, selectedstate, setSelectedstate } = useContext(SelectPlanContext);
-    const { personalinfo, setPersonalinfo } = useContext(PersonalInfoContext);
+    const { selectedAdon } = useContext(AdsonContext);
+    const { plandetails } = useContext(SelectPlanContext);
+
 
 
     const handleGoBack = () => {
@@ -24,13 +21,13 @@ function Summary() {
     }
 
 
-useEffect(() => {
-    console.log(personalinfo, 'personalinfo')
-    console.log(plandetails, 'plandetails')
-    console.log(selectedAdon, 'selectedAdon')
-    // console.log(stepIndex, 'stepIndex')
-}, [])
-
+    function sumArrayValues(arr) {
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) {
+            sum += parseInt(arr[i].value);
+        }
+        return sum += parseInt(plandetails?.price);
+    }
 
 
     return (
@@ -45,7 +42,7 @@ useEffect(() => {
                         <div className="flexResume">
                             <div>
                                 <h4 id="modeResume">{plandetails?.name} ({plandetails?.plan?.includes('free') ? 'yearly' : 'monthly'})</h4>
-                                <button >Change</button>
+                                <button onClick={() => setStepIndex(1)}   >Change</button>
                             </div>
                             <label htmlFor="" id="priceResume">{plandetails?.price}</label>
                         </div>
@@ -53,7 +50,7 @@ useEffect(() => {
                         <span></span>
 
                         {
-                            selectedAdon.map((x, i)=>{
+                            selectedAdon.map((x, i) => {
                                 return (
                                     <div key={i} className="flexResume">
                                         <p>{x.name}</p>
@@ -65,14 +62,14 @@ useEffect(() => {
                     </div>
                 </div>
                 <div className="flexTotal">
-                    <p id="modeTotal">Total</p>
+                    <p id="modeTotal">Total ({plandetails?.plan?.includes('free') ? 'per year' : 'per month'})</p>
                     <span id="totalPrice"></span>
-                    <span className="dollar">11 $</span>
+                    <span className="dollar">{sumArrayValues(selectedAdon)} $</span>
                 </div>
 
                 <div className="buttonContainerStepFour">
                     <button onClick={handleGoBack} className="goBack">Go back</button>
-                    <button onClick={handleNext} className="nextStep">Next Step</button>
+                    <button onClick={handleNext} className="nextStep">Confirm</button>
                 </div>
 
             </div>
