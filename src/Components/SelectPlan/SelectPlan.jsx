@@ -59,12 +59,14 @@ function SelectPlan() {
     const [isChecked, setIsChecked] = useState(false);
     const [selectedPlan, setSelectedPlan] = useState(null);
     const [errorstate, setErrorstate] = useState(false)
-    const [activeStates, setActiveStates] = useState(Array(monthlyData.length).fill(false));
+    const [activeStates, setActiveStates] = useState(Array(3).fill(false));
+
 
     const handleCheckboxChange = (event) => {
         setIsChecked(event.target.checked);
         setActiveStates(Array(monthlyData.length).fill(false))
-        // console.log(activeStates, 'actives stateee')
+        setActiveStatesplan(Array(monthlyData.length).fill(false))
+
     };
     const { stepIndex, setStepIndex } = useContext(StepsContext);
     const { plandetails, setPlandetails, activeStatesplan, setActiveStatesplan } = useContext(SelectPlanContext);
@@ -83,9 +85,8 @@ function SelectPlan() {
     const handlePlanSelect = (planIndex, details) => {
         // setSelectedPlan(planId);
         setActiveStates(activeStates?.map((_, index) => index === planIndex));
-         console.log(planIndex, details, 'dddd')
-        // console.log(activeStates, 'activeStates')
         setPlandetails(details)
+        setActiveStatesplan(activeStates?.map((_, index) => index === planIndex))
     }
 
 
@@ -107,13 +108,11 @@ function SelectPlan() {
                         !isChecked ? monthlyData?.map((plan, i) => (
 
                             <button
-                                className={`${activeStates[i] ? 'activestate' : "planButton"}`}
+                                className={`${activeStatesplan[i] ? 'activestate' : "planButton"}`}
 
 
                                 id={plan?.id} key={plan?.id} onClick={() => handlePlanSelect(i, plan)}>
-                                    {
-                                    console.log(activeStates[i], 'activeStates[i]--', i)
-                                    }
+
 
                                 <img src={plan?.image} alt="" />
                                 <p className='nametag'  >{plan?.name}</p>
