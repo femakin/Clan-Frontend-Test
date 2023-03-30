@@ -1,69 +1,126 @@
-import React, { useState } from 'react'
-import iconarcade from '../../Assets/images/iconarcade.png'
-import iconpro from '../../Assets/images/icon-pro.svg'
-import iconadvanced from '../../Assets/images/icon-advanced.svg'
+import React, { useState } from 'react';
+import iconarcade from '../../Assets/images/iconarcade.png';
+import iconpro from '../../Assets/images/icon-pro.svg';
+import iconadvanced from '../../Assets/images/icon-advanced.svg';
+
+const monthlyData = [
+    {
+        id: 'moisArcade',
+        image: iconarcade,
+        name: 'Arcade',
+        price: '9$/mo',
+
+    },
+    {
+        id: 'moisAdvenced',
+        image: iconadvanced,
+        name: 'Advanced',
+        price: '12$/mo',
+
+    },
+    {
+        id: 'moisPro',
+        image: iconpro,
+        name: 'Pro',
+        price: '15$/mo',
+
+    }
+];
+
+
+const yearlyData = [
+    {
+        id: 'moisArcade',
+        image: iconarcade,
+        name: 'Arcade',
+        price: '90$/mo',
+        plan: '2 months free'
+    },
+    {
+        id: 'moisAdvenced',
+        image: iconadvanced,
+        name: 'Advanced',
+        price: '120$/mo',
+        plan: '2 months free'
+    },
+    {
+        id: 'moisPro',
+        image: iconpro,
+        name: 'Pro',
+        price: '150$/mo',
+        plan: '2 months free'
+    }
+];
 
 function SelectPlan() {
     const [isChecked, setIsChecked] = useState(false);
 
     const handleCheckboxChange = (event) => {
         setIsChecked(event.target.checked);
-        console.log(event.target.checked)
-        console.log(isChecked)
+        console.log(event.target.checked);
+        console.log(isChecked);
     };
-  return (
-    <div>
 
-          {/* SELECT PLAN */}
-          <div className="stepPlan" id="stepPlan">
-              <h1>Select your plan</h1>
-              <p className="descrition">
-                  You have the option of monthly or yearly billing.
-              </p>
-              <div className="planMonth" id="planMonth">
-                  <button className="planButton" id="moisArcade" >
-                      <img src={iconarcade} alt="" />
+    return (
+        <div>
+            {/* SELECT PLAN */}
+            <div className="stepPlan" id="stepPlan">
+                <h1>Select your plan</h1>
+                <p className="descrition">
+                    You have the option of monthly or yearly billing.
+                </p>
+                <div className="planMonth" id="planMonth">
+                    {
 
-                      <span id="priceMonth" className="priceMonth">9$/mo</span>
-                  </button>
+                        !isChecked ? monthlyData.map((plan) => (
+                            <button className="planButton" id={plan?.id} key={plan?.id}>
+                                <img src={plan?.image} alt="" />
+                                <p>{plan?.name}</p>
+                                <span id="priceMonth" className="priceMonth">
+                                    {plan?.price}
+                                </span>
+                                <span id="priceMonth" className="priceMonth">
+                                    {plan?.plan}
+                                </span>
+                            </button>
+                        )) :
+                            yearlyData.map((plan) => (
+                                <button className="planButton" id={plan?.id} key={plan?.id}>
+                                    <img src={plan?.image} alt="" />
+                                    <p>{plan?.name}</p>
+                                    <span id="priceMonth" className="priceMonth">
+                                        {plan?.price}
+                                    </span>
+                                    <label  className="free">
+                                        {plan?.plan}
+                                    </label>
+                                </button>
+                            ))
 
+                    }
+                </div>
 
-                  <button className="planButton" id="moisAdvenced" >
-                      <img src={iconadvanced} alt="" />
+                <div className="switch">
+                    <p className="monthly">Monthly</p>
+                    <label className="check">
+                        <input
+                            type="checkbox"
+                            id="switch"
+                            checked={isChecked}
+                            onChange={handleCheckboxChange}
+                        />
+                        <span></span>
+                    </label>
+                    <p className="yearly">Yearly</p>
+                </div>
 
-                      <p>Advenced</p>
-                      <span id="priceMonth" className="priceMonth">12$/mo</span>
-                  </button>
-
-
-                  <button className="planButton" id="moisPro" >
-                      <img src={iconpro} alt="" />
-                      <p>Pro</p>
-                      <span id="priceMonth" className="priceMonth">15$/mo</span>
-                  </button>
-
-              </div>
-
-              <div className="switch">
-                  <p className="monthly">Monthly</p>
-                  <label className="check">
-                      <input type="checkbox" id="switch" checked={isChecked}
-                          onChange={handleCheckboxChange}   />
-                      <span></span>
-                  </label>
-                  <p className="yearly">Yearly</p>
-              </div>
-              <div className="buttonContainerStepTwo">
-                  <button  className="goBack">Go back</button>
-                  <button  className="nextStep">Next Step</button>
-              </div>
-          </div>
-
-
-
-
-    </div>
-  )
+                <div className="buttonContainerStepTwo">
+                    <button className="goBack">Go back</button>
+                    <button className="nextStep">Next Step</button>
+                </div>
+            </div>
+        </div>
+    );
 }
 
-export default SelectPlan
+export default SelectPlan;

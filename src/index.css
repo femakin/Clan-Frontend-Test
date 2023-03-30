@@ -378,24 +378,64 @@ display: flex;
   flex-direction: row;
 }
 
-.circle p {
-  /* margin-top: 5px; */
-}
 
-.circle1 {
-  /* width: 30px;
-  height: 30px;
-  border-radius: 20px;
-  background-color: rgb(255, 255, 255);
-  border: solid 1px white;
+/* SELECT PLAN STYLING   */
+
+
+
+ #stepPlan {
+   /* display: none;
+   flex-direction: column; */
+ }
+
+    .free {
+      cursor: pointer;
+      margin-left: 57px;
+      font-size: 12px;
+      margin-top: 41px;
+      position: absolute;
+    }
+
+ .planMonth {
+   display: flex;
+   justify-content: space-between;
+   flex-direction: column;
+ }
+
+.planButton {
   display: flex;
-  justify-content: center;
-  color: black; */
+  flex-direction: row;
+  border-radius: 10px;
+  width: 100%;
+  height: 66px;
+  border: solid 1px hsl(229, 24%, 87%);
+  background-color: white;
+  margin-top: 10px;
+  cursor: pointer;
+}
 
+.planButton p {
+  font-size: 16px;
+  margin-top: 4px;
+  margin-left: 8px;
+  margin-bottom: 0px;
+}
+
+.planButton span {
+  cursor: pointer;
+  margin-left: 57px;
+  font-size: 12px;
+  margin-top: 23px;
+  position: absolute;
 }
 
 
-
+    .buttonContainerStepTwo {
+      display: flex;
+      justify-content: space-between;
+      background-color: rgba(0, 255, 51, 0);
+      padding-top: 25px;
+    }
 
 
 
