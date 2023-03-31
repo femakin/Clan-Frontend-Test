@@ -111,7 +111,7 @@ function Addons() {
         // }
         setStepIndex(stepIndex + 1)
         // console.log(selectedAdon, 'selectedAdon')
-        console.log(selectedAdon?.map((x => x.placeholder === 'onlin1')).includes(true), 'ppppp')
+        // console.log(selectedAdon?.map((x => x.placeholder === 'onlin1')).includes(true), 'ppppp')
 
     }
 
@@ -120,13 +120,13 @@ function Addons() {
 
     // }, [selectedAdon])
 
-    useCallback(
-      () => {
-            console.log(selectedAdon, 'selectedAdon')
-            console.log(selectedAdon?.filter((x => x.placeholder === 'onlin1')), 'ppppp')
-      },
-        [selectedAdon],
-    )
+    // useCallback(
+    //   () => {
+    //         console.log(selectedAdon, 'selectedAdon')
+    //         console.log(selectedAdon?.filter((x => x.placeholder === 'onlin1')), 'ppppp')
+    //   },
+    //     [selectedAdon],
+    // )
 
 
 

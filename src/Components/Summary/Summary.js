@@ -30,9 +30,9 @@ function Summary() {
     }
 
 
-    useEffect(() => {
-        console.log(selectedAdon, 'addonss')
-    }, [])
+    // useEffect(() => {
+    //     console.log(selectedAdon, 'addonss')
+    // }, [])
 
 
 
