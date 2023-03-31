@@ -100,10 +100,15 @@ function Addons() {
         //     setStepIndex(stepIndex + 1)
         //     setEmptyarray(false)
         // }
-        setStepIndex(stepIndex + 1)
-        // console.log(selectedAdon, 'selectedAdon')
+        // setStepIndex(stepIndex + 1)
+         console.log(selectedAdon, 'selectedAdon')
         // console.log(selectedAdon?.map((x => x.placeholder === 'onlin1')).includes(true), 'ppppp')
-
+if (selectedAdon?.length === 0) {
+    setEmptyarray(true)
+}else{
+    setStepIndex(stepIndex + 1)
+    setEmptyarray(false)
+}
     }
 
 
@@ -270,6 +275,8 @@ function Addons() {
                                     <p className="prix">{x.rate}</p>
                                 </div>
 
+
+
                             </div>
                         )
                     })
@@ -278,7 +285,14 @@ function Addons() {
                 <button onClick={handleGoBack} className="goBack">Go back</button>
                 <button onClick={handleNext} className="nextStep">Next Step</button>
             </div>
+              {
+                emptyarray && <div style={{
+                    display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'red', fontSize: '12px'
 
+                }}>
+                    Please select atleast one add-ons
+                </div>
+              }
         </div>
     )
 }
