@@ -1,4 +1,4 @@
-import React, { useContext} from 'react'
+import React, { useContext, useEffect} from 'react'
 import { AdsonContext } from '../context/Addons'; import { SelectPlanContext } from '../context/SelectPlanContext';
 import { StepsContext } from '../context/StepsContext';
 import './Summary.css'
@@ -30,6 +30,12 @@ function Summary() {
     }
 
 
+    useEffect(() => {
+        console.log(selectedAdon, 'addonss')
+    }, [])
+
+
+
     return (
         <div className="stepSummary" id="stepSummary">
             <h1>Finishing up</h1>
@@ -48,12 +54,9 @@ function Summary() {
                         </div>
                         <br />
                         <span></span>
-                        {
-                            console.log(selectedAdon, 'selectedAdon')
-                        }
 
                         {
-                            selectedAdon.filter((x, i, self) => self.findIndex(y => y?.name === x?.name) === i)
+                            selectedAdon?.filter((x, i, self) => self.findIndex(y => y?.name === x?.name) === i)
                                 .map((x, i) => {
                                     return (
                                         <div key={i} className="flexResume">
