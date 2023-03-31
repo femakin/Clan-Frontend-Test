@@ -45,19 +45,15 @@ function Addons() {
         };
 
         if (event.target.checked) {
-            // remove any existing item with the same id and keep the most recent one
-            setCheckedItems(prevState =>
-                [...prevState.filter(x => x?.name !== item?.name), item].sort(
-                    (a, b) => new Date(b.checkedTime) - new Date(a.checkedTime)
-                )
-            );
             setSelectedAdon(prevState =>
                 [...prevState.filter(x => x?.name !== item?.name), item].sort(
                     (a, b) => new Date(b.checkedTime) - new Date(a.checkedTime)
-                ));
+                ).slice(0, 3) // keep only the first three most recent items
+            );
         } else {
-            setCheckedItems(prevState => prevState.filter(x => x?.name !== item?.name));
-            setSelectedAdon(prevState => prevState.filter(x => x?.name !== item?.name));
+            setSelectedAdon(prevState =>
+                prevState.filter(x => x?.name !== item?.name)
+            );
         }
     }
 
@@ -74,20 +70,15 @@ function Addons() {
 
         };
         if (event.target.checked) {
-            // remove any existing item with the same id and keep the most recent one
-            setCheckedItems(prevState =>
-                [...prevState.filter(x => x?.name !== item?.name), item].sort(
-                    (a, b) => new Date(b.checkedTime) - new Date(a.checkedTime)
-                )
-            );
             setSelectedAdon(prevState =>
                 [...prevState.filter(x => x?.name !== item?.name), item].sort(
                     (a, b) => new Date(b.checkedTime) - new Date(a.checkedTime)
-                ));
-        }
-        else {
-            setCheckedItems(prevState => prevState.filter((x) => x?.name !== item?.name)); // use functional update
-            setSelectedAdon(prevState => prevState.filter((x) => x?.name !== item?.name))
+                ).slice(0, 3) // keep only the first three most recent items
+            );
+        } else {
+            setSelectedAdon(prevState =>
+                prevState.filter(x => x?.name !== item?.name)
+            );
         }
     }
 
@@ -117,13 +108,13 @@ function Addons() {
 
 
     // useEffect(() => {
-
+    // console.log(selectedAdon, 'selectedAdon')
     // }, [selectedAdon])
 
     // useCallback(
     //   () => {
     //         console.log(selectedAdon, 'selectedAdon')
-    //         console.log(selectedAdon?.filter((x => x.placeholder === 'onlin1')), 'ppppp')
+    //         // console.log(selectedAdon?.filter((x => x.placeholder === 'onlin1')), 'ppppp')
     //   },
     //     [selectedAdon],
     // )
